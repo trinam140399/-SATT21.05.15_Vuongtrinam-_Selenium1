@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
-public class TC06 {
+public class TC09 {
     WebDriver driver;
 
     @BeforeTest
@@ -17,13 +17,16 @@ public class TC06 {
         driver.get("http://www.railway.somee.com/Account/Login.cshtml");
     }
 
-    @Test(description = "TC06-My ticket, Change password and Logout tabs are displayed. Click 'My ticket' tab, user will be directed to My ticket page. Click 'Change password' tab, user will be directed to Change password page")
-    public void TC06(){
+    @Test(description = "TC09-Message: Your password has been updated appears")
+    public void TC09(){
         driver.findElement(By.xpath("//input[@name='username']")).sendKeys("trinam1403@gmail.com");
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("Nam111111");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("Nam11111");
         driver.findElement(By.xpath("//input[@value='login']")).click();
         driver.findElement(By.xpath("//div[@id='menu']/ul/li/a[@href='/Account/ChangePassword.cshtml']")).click();
-
+        driver.findElement(By.xpath("//input[@name='currentPassword']")).sendKeys("Nam11111");
+        driver.findElement(By.xpath("//input[@name='newPassword']")).sendKeys("Nam111111");
+        driver.findElement(By.xpath("//input[@name='confirmPassword']")).sendKeys("Nam111111");
+        driver.findElement(By.xpath("//input[@value='Change Password']")).click();
     }
 
     @AfterTest

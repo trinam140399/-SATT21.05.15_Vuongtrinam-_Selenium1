@@ -17,7 +17,7 @@ public class TC05 {
         driver.get("http://www.railway.somee.com/Account/Login.cshtml");
     }
 
-    @Test
+    @Test(description = "TC05-User can't login and message. You have used 4 out of 5 login attempts. After all 5 have been used, you will be unable to login for 15 minutes")
     public void TC05(){
         driver.findElement(By.xpath("//input[@name='username']")).sendKeys("trinam1403@gmail.com");
         driver.findElement(By.xpath("//input[@name='password']")).sendKeys("Nam123465");
@@ -32,9 +32,9 @@ public class TC05 {
         driver.findElement(By.xpath("//input[@value='login']")).click();
     }
 
-//    @AfterTest
-//    public void tearDown(){
-//        driver.quit();
-//    }
+    @AfterTest
+    public void tearDown(){
+        driver.quit();
+    }
 
 }

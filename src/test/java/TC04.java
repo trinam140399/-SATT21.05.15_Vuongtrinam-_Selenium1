@@ -17,14 +17,14 @@ public class TC04 {
         driver.get("http://www.railway.somee.com/Page/BookTicketPage.cshtml");
     }
 
-    @Test
+    @Test(description = "TC04-Login page displays instead of Book ticket page")
     public void TC04(){
         driver.get("http://www.railway.somee.com/Account/Login.cshtml?ReturnUrl=/Page/BookTicketPage.cshtml");
     }
 
-//    @AfterTest
-//    public void tearDown(){
-//        driver.quit();
-//    }
+    @AfterTest
+    public void tearDown(){
+        driver.quit();
+    }
 
 }

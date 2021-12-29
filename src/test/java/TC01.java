@@ -17,16 +17,17 @@ public class TC01 {
         driver.get("http://www.railway.somee.com/Account/Login.cshtml");
     }
 
-    @Test
+    @Test(description = "TC01-User is logged into Railway. Welcome user message is displayed.")
+
     public void TC01(){
         driver.findElement(By.xpath("//input[@name='username']")).sendKeys("trinam1403@gmail.com");
         driver.findElement(By.xpath("//input[@name='password']")).sendKeys("Nam11111");
         driver.findElement(By.xpath("//input[@value='login']")).click();
     }
 
-//    @AfterTest
-//    public void tearDown(){
-//        driver.quit();
-//    }
+    @AfterTest
+    public void tearDown(){
+        driver.quit();
+    }
 
 }

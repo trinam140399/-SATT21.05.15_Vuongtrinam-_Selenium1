@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
-public class TC02 {
+public class TC14 {
     WebDriver driver;
 
     @BeforeTest
@@ -15,13 +15,18 @@ public class TC02 {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get("http://www.railway.somee.com/Account/Login.cshtml");
+        driver.findElement(By.xpath("//div[@id='menu']/ul/li/a[@href='/Account/Login.cshtml']")).click();
     }
 
-    @Test(description = "TC02-User can't login and message. There was a problem with your login and/or errors exist in your form")
-    public void TC02(){
-        driver.findElement(By.xpath("//input[@name='username']")).sendKeys("");
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("");
+    @Test(description = "TC01-User is logged into Railway. Welcome user message is displayed.")
+
+    public void TC14(){
+        driver.findElement(By.xpath("//input[@name='username']")).sendKeys("trinam1403@gmail.com");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("Nam111111");
         driver.findElement(By.xpath("//input[@value='login']")).click();
+
+        driver.findElement(By.xpath("//div[@id='menu']/ul/li/a[@href='/Page/BookTicketPage.cshtml']")).click();
+
     }
 
     @AfterTest
