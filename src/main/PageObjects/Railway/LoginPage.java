@@ -1,27 +1,61 @@
-package Railway;
+package main.PageObjects.Railway;
 
+import main.Common.Constant;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-public class LoginPage extends GenaralPage{
+public class LoginPage extends GeneralPage {
 
-    @FindBy(xpath = "//input[@id='username']")
-    public WebElement getTxtUsername;
+    //locator
+    private final By txtUsername = By.id("username");
+    private final By txtPassword = By.id("password");
+    private final By btnLogin = By.xpath("//input[@value='Login']");
+    private final By lblErrorMessage = By.xpath("//p[@class='message error LoginForm']");
 
-    @FindBy(xpath = "//input[@id='password']")
-    public WebElement getTxtPassword;
+    //Element
+    protected WebElement getTxtUsername() {
+        return Constant.WEBDRIVER.findElement(txtUsername);
+    }
+    protected WebElement getTxtPassword() {
+        return Constant.WEBDRIVER.findElement(txtPassword);
+    }
+    protected WebElement getBtnLogin() {
+        return Constant.WEBDRIVER.findElement(btnLogin);
+    }
+    protected WebElement getLblErrorMessage() {return Constant.WEBDRIVER.findElement(lblErrorMessage);}
 
-    @FindBy(xpath = "//input[@value='login']")
-    public WebElement getBtnLogin;
+    //Methods
 
-    @FindBy(xpath = "//input[@class='message error LoginForm']")
-    public WebElement getlblLoginErrorMsg;
+    public boolean isErrMesDisplay(){
+        try{
+            if (getLblErrorMessage().isDisplayed())
+            {
+                return true;
+            }else{
+                return false;
+            }
+        }catch (Exception e){
+            System.out.print(e.getMessage());
+        }
+        return false;
+    }
 
-public HomePage login(String username, String password)
-    {
-        this.getTxtUsername.sendKeys(username);
-        this.getTxtPassword.sendKeys(password);
+    public String getErrorMessage() {return this.getLblErrorMessage().getText();}
+
+    public void getLogin(String name, String password) {
+        //Submit login
+        this.getTxtUsername().sendKeys(name);
+        this.getTxtPassword().sendKeys(password);
         this.getBtnLogin().click();
+    }
 
-        return new HomePage();
+    public void getLoginMultipleTimes(String name, String password, int times) {
+        //Submit login
+        getLogin(name, password);
+
+        for (int i = 1; i < times; i++) {
+            this.getTxtUsername().clear();
+            getLogin(name, password);
+        }
     }
 }

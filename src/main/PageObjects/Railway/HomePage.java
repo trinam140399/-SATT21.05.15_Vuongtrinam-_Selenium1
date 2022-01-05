@@ -1,14 +1,17 @@
-package Railway;
+package main.PageObjects.Railway;
 
-import Constant.Constant;
+import main.Common.Constant;
 
-public class HomePage extends GeneralPage{
+public class HomePage extends GeneralPage {
+
+    //Localtor
 
 
+    //Elements
 
-    public HomePage open()
-    {
+
+    //Methods
+    public void open(){
         Constant.WEBDRIVER.navigate().to(Constant.RAILWAY_URL);
-        return this;
     }
 }

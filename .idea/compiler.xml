@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SeleniumLevel1" />
+        <module name="-SATT21.05.15_Vuongtrinam-_Selenium1" />
       </profile>
     </annotationProcessing>
   </component>
