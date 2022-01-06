@@ -30,10 +30,10 @@ public class TestBase {
         System.out.println("Reset method");
     }
 
-//    @AfterMethod
-//    public void afterMethod() {
-//        System.out.println("Post-condition");
-//        Constant.WEBDRIVER.quit();
-//        System.out.println("End method");
-//    }
+    @AfterMethod
+    public void afterMethod() {
+        System.out.println("Post-condition");
+        Constant.WEBDRIVER.quit();
+        System.out.println("End method");
+    }
 }
